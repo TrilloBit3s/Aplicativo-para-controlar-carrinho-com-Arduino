@@ -1,6 +1,6 @@
 # Aplicativo-para-controlar-carrinho-com-Arduino
 
-![CarControllBluetooth_App_V2](https://github.com/TrilloBit3s/Aplicativo-para-controlar-carrinho-com-Arduino/assets/79748858/b644c383-8058-4e03-afb3-69b3a946d8c8)
+Desenvolvi um aplicativo para controlar veiculos com Arduino e Esp32
 
 ![Screenshot_20240226-170732](https://github.com/TrilloBit3s/Aplicativo-para-controlar-carrinho-com-Arduino/assets/79748858/b4c859d5-2630-4e82-aab1-b0b3a042f0df)
 
