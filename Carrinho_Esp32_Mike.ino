@@ -3,7 +3,7 @@ Algoritimo para Esp32 DOIT DEVKI V1
 Dev por "Michael" Trillobit3sGames
 trillobit3s@gmail.com - estuartyy@gmail.com 
 primeira versão bluetooth arduino 05/02/2017
-Ultima atualização bluetooth Esp32 14/12/2023
+Ultima atualização bluetooth Esp32 12/03/2024
 
 USE ESTES CARACTERES EM SEU CÓDIGO
 
@@ -41,8 +41,7 @@ const int ENB = 12; //ENB
 int vSpeed = 255; //Define velocidade padrão 0 a 255.
 char receivedChar;  //O valor recebido será armazenado como CHAR nesta variável
 
-void setup() 
-{
+void setup(){
   //Serial.begin(9600); //monitor usado pelo HC05
   Serial.begin(115200); //Padrão
   SerialBT.begin("Esp32"); //Você pode alterar o nome do seu dispositivo Bluetooth aqui
@@ -63,20 +62,18 @@ void setup()
   noTone(BUZZER);
 }  
 
-void loop() 
-{
+void loop(){
+
   analogWrite(ENA, 255); //velovidade do motor esquerdo
   analogWrite(ENB, 255); //velovidade do motor direito
 
   receivedChar =(char)SerialBT.read();
 
-  if (Serial.available()) 
-  {
+  if (Serial.available()){
     SerialBT.write(Serial.read());
   }
 
-  if (SerialBT.available()) 
-  { 
+  if (SerialBT.available()){ 
     Serial.print (" Recebido: "); //imprimir no monitor serial
     Serial.println(receivedChar); //imprimir no monitor serial
     
@@ -122,103 +119,87 @@ void loop()
   if (receivedChar == 'v'){ //Desligar Buzina
     desligarBuzina();
   }
-
-    if(receivedChar == 'S')
-    {
+  
+    if(receivedChar == 'S'){
       ficarParado();
     }
   }
   delay(20);
 }
 
-  void andarParaFrente()
-  {
+  void andarParaFrente(){
     digitalWrite(MR1, LOW);
     digitalWrite(MR2, HIGH);
     digitalWrite(ML1, HIGH);
     digitalWrite(ML2, LOW);
   }
-  void andarParaTras()
-  {
+  void andarParaTras(){
     digitalWrite(MR1, HIGH);
     digitalWrite(MR2, LOW);
     digitalWrite(ML1, LOW);
     digitalWrite(ML2, HIGH);
   }
-  void andarParaDireita()
-  {
+  void andarParaDireita(){
     digitalWrite(MR1, HIGH);
     digitalWrite(MR2, LOW);
 	  digitalWrite(ML1, HIGH);
     digitalWrite(ML2, LOW);
   }
-  void andarParaEsquerda()
-  {
+  void andarParaEsquerda(){
     digitalWrite(MR1, LOW);
 	  digitalWrite(MR2, HIGH);
     digitalWrite(ML1, LOW);
     digitalWrite(ML2, HIGH);
   }
-  void ficarParado()
-  {
+  void ficarParado(){
     digitalWrite(MR1, LOW);
     digitalWrite(MR2, LOW);
     digitalWrite(ML1, LOW);
     digitalWrite(ML2, LOW);
   }
-  void trasEsquerda()
-  {
+  void trasEsquerda(){
     digitalWrite(MR1, HIGH); 
     digitalWrite(MR2, LOW);
     digitalWrite(ML1, 150);    
     digitalWrite(ML2, LOW);  
   }
-  void trasDireita()
-  {
+  void trasDireita(){
     digitalWrite(MR1, LOW);   
     digitalWrite(MR2, HIGH);
     digitalWrite(ML1, LOW);   
     digitalWrite(ML2, 150); 
   }
-  void frenteEsquerda()
-  {
+  void frenteEsquerda(){
     digitalWrite(MR1, LOW);   
     digitalWrite(MR2, HIGH);
     digitalWrite(ML1, LOW); 
     digitalWrite(ML2, 150); 
   }
-  void frenteDireita()
-  {
+  void frenteDireita(){
     digitalWrite(MR1, 150); 
     digitalWrite(MR2, LOW);
     digitalWrite(ML1, HIGH);      
     digitalWrite(ML2, LOW);   
   }
-  void farolFrenteLigado()
-  {
+  void farolFrenteLigado(){
     digitalWrite(LED_Verd_Esq, HIGH);
     digitalWrite(LED_Verd_Dir, HIGH);
   }
-  void farolFrenteDesligado()
-  {
+  void farolFrenteDesligado(){
     digitalWrite(LED_Verd_Esq, LOW);
     digitalWrite(LED_Verd_Dir, LOW); 
   }
-  void farolTrasLigado()
-  {
+  void farolTrasLigado(){
     digitalWrite(LED_Verm_Esq, HIGH);
     digitalWrite(LED_Verm_Dir, HIGH);
   }
-  void farolTrasDesligado()
-  {
+  void farolTrasDesligado(){
     digitalWrite(LED_Verm_Esq, LOW);
     digitalWrite(LED_Verm_Dir, LOW); 
   }
-  void ligarBuzina()
-  {
+  void ligarBuzina(){
     tone(BUZZER, 1000);
   }
-  void desligarBuzina()
-  {
+  void desligarBuzina(){
     noTone(BUZZER);
   }
